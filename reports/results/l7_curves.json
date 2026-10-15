@@ -1,0 +1,246 @@
+{
+ "bayes_error": 0.11606574913281376,
+ "learning": [
+  {
+   "model": "1-nearest neighbour (high variance)",
+   "n": 50,
+   "training": 0.0,
+   "CV": 0.356,
+   "truth": 0.35841500000000004
+  },
+  {
+   "model": "1-nearest neighbour (high variance)",
+   "n": 100,
+   "training": 0.0,
+   "CV": 0.32599999999999996,
+   "truth": 0.32105
+  },
+  {
+   "model": "1-nearest neighbour (high variance)",
+   "n": 200,
+   "training": 0.0,
+   "CV": 0.299,
+   "truth": 0.29857
+  },
+  {
+   "model": "1-nearest neighbour (high variance)",
+   "n": 400,
+   "training": 0.0,
+   "CV": 0.29,
+   "truth": 0.279495
+  },
+  {
+   "model": "1-nearest neighbour (high variance)",
+   "n": 800,
+   "training": 0.0,
+   "CV": 0.27124999999999994,
+   "truth": 0.26141000000000003
+  },
+  {
+   "model": "1-nearest neighbour (high variance)",
+   "n": 1600,
+   "training": 0.0,
+   "CV": 0.2525,
+   "truth": 0.24434
+  },
+  {
+   "model": "1-nearest neighbour (high variance)",
+   "n": 3200,
+   "training": 0.0,
+   "CV": 0.23603124999999997,
+   "truth": 0.23220999999999997
+  },
+  {
+   "model": "15-nearest neighbours",
+   "n": 50,
+   "training": 0.378,
+   "CV": 0.42200000000000004,
+   "truth": 0.45288000000000006
+  },
+  {
+   "model": "15-nearest neighbours",
+   "n": 100,
+   "training": 0.301,
+   "CV": 0.375,
+   "truth": 0.36078
+  },
+  {
+   "model": "15-nearest neighbours",
+   "n": 200,
+   "training": 0.2515,
+   "CV": 0.318,
+   "truth": 0.319675
+  },
+  {
+   "model": "15-nearest neighbours",
+   "n": 400,
+   "training": 0.21525,
+   "CV": 0.271,
+   "truth": 0.26026499999999997
+  },
+  {
+   "model": "15-nearest neighbours",
+   "n": 800,
+   "training": 0.1775,
+   "CV": 0.22562499999999996,
+   "truth": 0.21640500000000001
+  },
+  {
+   "model": "15-nearest neighbours",
+   "n": 1600,
+   "training": 0.1528125,
+   "CV": 0.1931875,
+   "truth": 0.187805
+  },
+  {
+   "model": "15-nearest neighbours",
+   "n": 3200,
+   "training": 0.14371875,
+   "CV": 0.17887499999999998,
+   "truth": 0.17435499999999998
+  },
+  {
+   "model": "logistic regression (high bias)",
+   "n": 50,
+   "training": 0.34,
+   "CV": 0.46799999999999997,
+   "truth": 0.489785
+  },
+  {
+   "model": "logistic regression (high bias)",
+   "n": 100,
+   "training": 0.375,
+   "CV": 0.45600000000000007,
+   "truth": 0.496945
+  },
+  {
+   "model": "logistic regression (high bias)",
+   "n": 200,
+   "training": 0.418,
+   "CV": 0.4795,
+   "truth": 0.48502
+  },
+  {
+   "model": "logistic regression (high bias)",
+   "n": 400,
+   "training": 0.45525000000000004,
+   "CV": 0.50275,
+   "truth": 0.50522
+  },
+  {
+   "model": "logistic regression (high bias)",
+   "n": 800,
+   "training": 0.47050000000000003,
+   "CV": 0.49974999999999997,
+   "truth": 0.50633
+  },
+  {
+   "model": "logistic regression (high bias)",
+   "n": 1600,
+   "training": 0.4845,
+   "CV": 0.5033125,
+   "truth": 0.511545
+  },
+  {
+   "model": "logistic regression (high bias)",
+   "n": 3200,
+   "training": 0.4965,
+   "CV": 0.5082187499999999,
+   "truth": 0.515355
+  }
+ ],
+ "validation": [
+  {
+   "depth": 1,
+   "training": 0.362,
+   "CV": 0.38249999999999995,
+   "truth": 0.3989775
+  },
+  {
+   "depth": 2,
+   "training": 0.24312499999999998,
+   "CV": 0.282625,
+   "truth": 0.2908275
+  },
+  {
+   "depth": 3,
+   "training": 0.16225,
+   "CV": 0.21275,
+   "truth": 0.21787
+  },
+  {
+   "depth": 4,
+   "training": 0.09912499999999999,
+   "CV": 0.15475,
+   "truth": 0.1537075
+  },
+  {
+   "depth": 5,
+   "training": 0.087,
+   "CV": 0.15712500000000001,
+   "truth": 0.15783750000000002
+  },
+  {
+   "depth": 6,
+   "training": 0.066125,
+   "CV": 0.16399999999999998,
+   "truth": 0.16541250000000002
+  },
+  {
+   "depth": 7,
+   "training": 0.047875,
+   "CV": 0.166,
+   "truth": 0.1688075
+  },
+  {
+   "depth": 8,
+   "training": 0.03225,
+   "CV": 0.17025000000000007,
+   "truth": 0.1713175
+  },
+  {
+   "depth": 9,
+   "training": 0.021124999999999998,
+   "CV": 0.177,
+   "truth": 0.17476750000000002
+  },
+  {
+   "depth": 10,
+   "training": 0.013250000000000001,
+   "CV": 0.17875000000000002,
+   "truth": 0.1781975
+  },
+  {
+   "depth": 11,
+   "training": 0.007375,
+   "CV": 0.17962499999999998,
+   "truth": 0.1810975
+  },
+  {
+   "depth": 12,
+   "training": 0.0035000000000000005,
+   "CV": 0.182,
+   "truth": 0.1832325
+  },
+  {
+   "depth": 13,
+   "training": 0.001375,
+   "CV": 0.18275,
+   "truth": 0.18486
+  },
+  {
+   "depth": 14,
+   "training": 0.00025,
+   "CV": 0.1835,
+   "truth": 0.18538749999999998
+  },
+  {
+   "depth": 15,
+   "training": 0.000125,
+   "CV": 0.18375,
+   "truth": 0.185485
+  }
+ ],
+ "depth chosen by CV": 4,
+ "depth best on truth": 4
+}

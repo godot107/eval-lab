@@ -84,6 +84,17 @@ def walk_forward(t, h, k=5):
         yield np.flatnonzero(t + h <= t[b[0]]), b
 
 
+def pooled_r2(model, X, y, folds):
+    """R^2 of all out-of-fold predictions together. Averaging R^2 per fold breaks with short contiguous test
+    blocks: overlapping targets barely vary inside a block, so each fold's R^2 divides by almost nothing."""
+    pred = np.full(len(y), np.nan)
+    for a, b in folds:
+        if len(a) > 50:
+            pred[b] = clone(model).fit(X[a], y[a]).predict(X[b])
+    m = ~np.isnan(pred)
+    return float(r2_score(y[m], pred[m]))
+
+
 def timeseries(seed, n=2000, h=20):
     rng = np.random.default_rng(seed)
     X, y, t = truth.overlapping(n, h, rng)
@@ -91,14 +102,41 @@ def timeseries(seed, n=2000, h=20):
     model = KNeighborsRegressor(10)
 
     def cv_r2(folds):
-        r = [r2_score(y[b], clone(model).fit(X[a], y[a]).predict(X[b])) for a, b in folds if len(a) > 50]
-        return float(np.mean(r))
+        return pooled_r2(model, X, y, folds)
 
     return {"shuffled K-fold": cv_r2(KFold(5, shuffle=True, random_state=seed).split(X)),
             "contiguous K-fold": cv_r2(KFold(5).split(X)),
             "purged + embargo K-fold": cv_r2(purged_folds(t, h)),
             "walk-forward": cv_r2(walk_forward(t, h)),
             "truth (fresh series)": float(r2_score(yn, clone(model).fit(X, y).predict(Xn)))}
+
+
+def purge_point(args):
+    """4c follow-up: contiguous vs purged folds as the number of folds and the target horizon grow."""
+    seed, k, h, n = args
+    rng = np.random.default_rng(seed)
+    X, y, t = truth.overlapping(n, h, rng)
+    Xn, yn, _ = truth.overlapping(20_000, h, rng)
+    model = KNeighborsRegressor(10)
+
+    def cv_r2(folds):
+        return pooled_r2(model, X, y, folds)
+
+    return {"folds": k, "horizon": h, "contiguous K-fold": cv_r2(KFold(k).split(X)),
+            "purged + embargo K-fold": cv_r2(purged_folds(t, h, k)),
+            "truth": float(r2_score(yn, clone(model).fit(X, y).predict(Xn)))}
+
+
+def purge_sweep(sims=20, n=2000, workers=8):
+    from concurrent.futures import ProcessPoolExecutor
+    jobs = [(s, k, h, n) for k in (5, 20, 50) for h in (5, 20, 60) for s in range(sims)]
+    with ProcessPoolExecutor(workers) as ex:
+        d = pd.DataFrame(list(ex.map(purge_point, jobs, chunksize=4)))
+    t = d.groupby(["folds", "horizon"]).mean().reset_index()
+    t["leak (contiguous - purged)"] = t["contiguous K-fold"] - t["purged + embargo K-fold"]
+    (config.RESULTS / "l4c_purge_sweep.json").write_text(json.dumps(t.to_dict(orient="records"), indent=1))
+    print(t.round(3))
+    return t
 
 
 # ---------- run all ----------

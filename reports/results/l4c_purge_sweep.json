@@ -1,0 +1,74 @@
+[
+ {
+  "folds": 5,
+  "horizon": 5,
+  "contiguous K-fold": -0.1610850946531771,
+  "purged + embargo K-fold": -0.1623487437441642,
+  "truth": -0.15050212148084186,
+  "leak (contiguous - purged)": 0.0012636490909870846
+ },
+ {
+  "folds": 5,
+  "horizon": 20,
+  "contiguous K-fold": -0.20889330246909066,
+  "purged + embargo K-fold": -0.2119829183588568,
+  "truth": -0.2034829336136561,
+  "leak (contiguous - purged)": 0.0030896158897661397
+ },
+ {
+  "folds": 5,
+  "horizon": 60,
+  "contiguous K-fold": -0.2844983125765812,
+  "purged + embargo K-fold": -0.29338615644724253,
+  "truth": -0.22881414877639958,
+  "leak (contiguous - purged)": 0.008887843870661327
+ },
+ {
+  "folds": 20,
+  "horizon": 5,
+  "contiguous K-fold": -0.150250267114764,
+  "purged + embargo K-fold": -0.15227049475688553,
+  "truth": -0.15050212148084186,
+  "leak (contiguous - purged)": 0.002020227642121536
+ },
+ {
+  "folds": 20,
+  "horizon": 20,
+  "contiguous K-fold": -0.18434856225278945,
+  "purged + embargo K-fold": -0.19638213285477937,
+  "truth": -0.2034829336136561,
+  "leak (contiguous - purged)": 0.012033570601989924
+ },
+ {
+  "folds": 20,
+  "horizon": 60,
+  "contiguous K-fold": -0.24735549128151546,
+  "purged + embargo K-fold": -0.27424244352828653,
+  "truth": -0.22881414877639958,
+  "leak (contiguous - purged)": 0.026886952246771068
+ },
+ {
+  "folds": 50,
+  "horizon": 5,
+  "contiguous K-fold": -0.14462245532191434,
+  "purged + embargo K-fold": -0.1517355234225914,
+  "truth": -0.15050212148084186,
+  "leak (contiguous - purged)": 0.00711306810067705
+ },
+ {
+  "folds": 50,
+  "horizon": 20,
+  "contiguous K-fold": -0.17108920022074608,
+  "purged + embargo K-fold": -0.196246632266867,
+  "truth": -0.2034829336136561,
+  "leak (contiguous - purged)": 0.02515743204612092
+ },
+ {
+  "folds": 50,
+  "horizon": 60,
+  "contiguous K-fold": -0.1950680423185218,
+  "purged + embargo K-fold": -0.2692090385774294,
+  "truth": -0.22881414877639958,
+  "leak (contiguous - purged)": 0.0741409962589076
+ }
+]

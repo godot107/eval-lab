@@ -9,14 +9,14 @@ measured against the real out-of-sample score instead of argued about.
 ```bash
 source ../../.venv/bin/activate          # shared workspace venv (sklearn 1.9, numpy 2.4); CPU only
 pytest -q
-PYTHONPATH=src python -m evallab regression   # lesson 2, ~45 s (downloads California housing to data/)
-PYTHONPATH=src python -m evallab estimators   # lesson 3, ~4 min on 8 processes
-PYTHONPATH=src python -m evallab leakage      # lesson 4, ~40 s
+PYTHONPATH=src python -m evallab all          # every lesson, ~10 min on 8 processes; or name lessons:
+PYTHONPATH=src python -m evallab classification regression estimators leakage purge tuning compare curves report
+PYTHONPATH=src python notebooks/build_walkthrough.py && PYTHONPATH=src jupyter nbconvert --to notebook --execute --inplace notebooks/walkthrough.ipynb
 ```
 
 Results: `reports/results/*.json` (+ per-simulation CSVs), figures in `reports/figures/`.
 
-## Lessons (status in TODO.md)
+## Lessons (all done; README has the results, blog.md the story)
 
 1. Choosing the classification metric: imbalance, ROC vs PR AUC, proper scores (log loss, Brier), calibration,
    cost-based thresholds.
@@ -37,3 +37,7 @@ Results: `reports/results/*.json` (+ per-simulation CSVs), figures in `reports/f
 - Lesson 3 scores misclassification error to match ESL 7.12; lesson 1 explains why a proper score is usually
   the better choice.
 - References are in PRIOR_ART.md, found through textbook-kb.
+- `__main__` sets OMP/OPENBLAS/MKL threads to 1: 8 pool workers x 12 BLAS threads drove the load average to 54.
+- Time-series R^2 is pooled over all out-of-fold predictions; per-fold R^2 breaks with short contiguous blocks.
+- German credit (OpenML credit-g) and California housing download to data/sk on first use.
+- PUBLIC repo godot107/eval-lab; CI runs pytest.

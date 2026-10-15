@@ -1,0 +1,26 @@
+{
+ "sims": 500,
+ "n": 300,
+ "alpha": 0.05,
+ "rates": {
+  "equal models (false-positive rate)": {
+   "paired t-test on 10-fold CV": 0.078,
+   "resampled t-test (15 splits)": 0.454,
+   "corrected resampled t-test": 0.052,
+   "5x2cv paired t-test": 0.052,
+   "McNemar on one holdout": 0.052
+  },
+  "B truly better (power)": {
+   "paired t-test on 10-fold CV": 0.292,
+   "resampled t-test (15 splits)": 0.73,
+   "corrected resampled t-test": 0.234,
+   "5x2cv paired t-test": 0.172,
+   "McNemar on one holdout": 0.118
+  }
+ },
+ "true errors when B is better": {
+  "model A error": 0.3928565,
+  "model B error": 0.3341541666666667,
+  "gap": 0.058702333333333336
+ }
+}

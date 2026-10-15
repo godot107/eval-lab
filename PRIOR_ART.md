@@ -15,9 +15,10 @@ Found through textbook-kb (Willie's library) on 2026-10-15. Section-level citati
 
 | Conformalized quantile regression | Romano, Patterson, Candes, "Conformalized Quantile Regression", NeurIPS 2019 | Lesson 2c |
 
-To add when lessons 5 and 6 are built (verify before citing): Cawley and Talbot (2010) on selection bias in
-model evaluation; Nadeau and Bengio (2003) on the corrected resampled t-test; Dietterich (1998) on statistical tests
-for comparing classifiers.
+| Testing whether one classifier beats another; the resampled t-test's inflated false positives; 5x2cv | Dietterich, "Approximate Statistical Tests for Comparing Supervised Classification Learning Algorithms", *Neural Computation* 10(7), 1998 | Lesson 6 |
+| Corrected resampled t-test | Nadeau and Bengio, "Inference for the Generalization Error", *Machine Learning* 52, 2003 | Lesson 6 |
+| Learning and validation curves | Guido and Muller ch. 5; scikit-learn user guide | Lesson 7 |
+| AutoML model-quality report | SageMaker Autopilot model quality reports (AWS ML blog, linked on the Trello card) | Lesson 8 |
 
 **Where this lab differs from the usual tutorial:** tutorials show *how* to call `cross_val_score`. Here every
 evaluation method is scored against the truth it estimates, so "how wrong can this be?" gets a number.

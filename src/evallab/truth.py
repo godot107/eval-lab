@@ -133,3 +133,68 @@ class Hetero:
     def sample(self, n, rng):
         x = rng.uniform(-3, 3, n)
         return x[:, None], 2 * np.sin(x) + x + self.scale(x) * rng.standard_normal(n)
+
+
+def with_prevalence(prevalence, rng=None, **kw):
+    """A `Logistic` problem whose intercept is set so that P(y = 1) is `prevalence` (bisection on 200k draws)."""
+    rng = rng or np.random.default_rng(SEED)
+    gen = Logistic(**kw)
+    X = rng.standard_normal((200_000, gen.p))
+    lo, hi = -15.0, 15.0
+    for _ in range(50):
+        gen.b0 = (lo + hi) / 2
+        lo, hi = (gen.b0, hi) if gen.prob(X).mean() < prevalence else (lo, gen.b0)
+    return gen
+
+
+@dataclass
+class Ring:
+    """A curved boundary: P(y=1|x) = sigmoid(sharp * (x0^2 + x1^2 - radius^2)); the other features are noise.
+    A linear model can't draw a circle (high bias); a 1-nearest-neighbour model can, given enough data (high
+    variance when data is scarce)."""
+    p: int = 6
+    sharp: float = 3.0
+    radius2: float = 1.4
+
+    def prob(self, X):
+        return 1 / (1 + np.exp(-self.sharp * (X[:, 0] ** 2 + X[:, 1] ** 2 - self.radius2)))
+
+    def sample(self, n, rng):
+        X = rng.standard_normal((n, self.p))
+        return X, (rng.random(n) < self.prob(X)).astype(int)
+
+    def bayes_error(self, rng=None, n=POP):
+        rng = rng or np.random.default_rng(SEED)
+        q = self.prob(rng.standard_normal((n, self.p)))
+        return float(np.minimum(q, 1 - q).mean())
+
+
+@dataclass
+class Views:
+    """Two blocks of 5 features each carry signal: logit = a * sum(x[:, :5]) + b * sum(x[:, 5:10]).
+    A model on block A and a model on block B are equally good when a == b (by symmetry), so any 'significant'
+    difference between them is a false positive. Making b > a gives a real difference, to measure power."""
+    a: float = 0.35
+    b: float = 0.35
+
+    def sample(self, n, rng):
+        X = rng.standard_normal((n, 10))
+        logit = self.a * X[:, :5].sum(1) + self.b * X[:, 5:].sum(1)
+        return X, (rng.random(n) < 1 / (1 + np.exp(-logit))).astype(int)
+
+
+@dataclass
+class Slopes:
+    """Groups (machines, sites) that share a general pattern but each bend it: logit = (base + d_g) . x, with a
+    group-specific d_g ~ N(0, spread). One group is a poor stand-in for the rest; many groups average it out."""
+    p: int = 8
+    per_group: int = 60
+    spread: float = 0.8
+
+    def sample(self, n_groups, rng):
+        g = np.repeat(np.arange(n_groups), self.per_group)
+        base = np.r_[np.full(4, 0.7), np.zeros(self.p - 4)]
+        coef = base + rng.normal(0, self.spread, (n_groups, self.p))
+        X = rng.standard_normal((len(g), self.p))
+        logit = np.einsum("ij,ij->i", X, coef[g])
+        return X, (rng.random(len(g)) < 1 / (1 + np.exp(-logit))).astype(int), g

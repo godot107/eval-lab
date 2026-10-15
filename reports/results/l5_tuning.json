@@ -1,0 +1,90 @@
+{
+ "5a_nested": [
+  {
+   "problem": "pure noise",
+   "m": 1,
+   "claimed (best CV score)": 0.48775,
+   "nested CV": 0.47850000000000004,
+   "truth": 0.49944875,
+   "optimism of claimed": -0.01169874999999998,
+   "optimism of nested": -0.02094874999999996
+  },
+  {
+   "problem": "pure noise",
+   "m": 10,
+   "claimed (best CV score)": 0.4245,
+   "nested CV": 0.48375,
+   "truth": 0.49902499999999994,
+   "optimism of claimed": -0.07452499999999995,
+   "optimism of nested": -0.015274999999999928
+  },
+  {
+   "problem": "pure noise",
+   "m": 100,
+   "claimed (best CV score)": 0.39875,
+   "nested CV": 0.48250000000000004,
+   "truth": 0.49922125,
+   "optimism of claimed": -0.10047125000000001,
+   "optimism of nested": -0.016721249999999965
+  },
+  {
+   "problem": "signal",
+   "m": 1,
+   "claimed (best CV score)": 0.44299999999999995,
+   "nested CV": 0.43425,
+   "truth": 0.4451975,
+   "optimism of claimed": -0.0021975000000000744,
+   "optimism of nested": -0.010947499999999999
+  },
+  {
+   "problem": "signal",
+   "m": 10,
+   "claimed (best CV score)": 0.38425,
+   "nested CV": 0.43150000000000005,
+   "truth": 0.424085,
+   "optimism of claimed": -0.03983500000000001,
+   "optimism of nested": 0.00741500000000006
+  },
+  {
+   "problem": "signal",
+   "m": 100,
+   "claimed (best CV score)": 0.34875,
+   "nested CV": 0.43174999999999997,
+   "truth": 0.43024500000000004,
+   "optimism of claimed": -0.08149500000000004,
+   "optimism of nested": 0.001504999999999923
+  }
+ ],
+ "5b_one_group": {
+  "one validation group": {
+   "claimed": {
+    "mean": 0.27520833333333333,
+    "std": 0.06729627536437975
+   },
+   "truth": {
+    "mean": 0.4021645833333333,
+    "std": 0.026945510068898403
+   },
+   "regret": {
+    "mean": 0.0360548611111111,
+    "std": 0.027047297413432692
+   }
+  },
+  "leave-one-group-out CV": {
+   "claimed": {
+    "mean": 0.35407986111111106,
+    "std": 0.03061092010598693
+   },
+   "truth": {
+    "mean": 0.3797743055555555,
+    "std": 0.016607620073890026
+   },
+   "regret": {
+    "mean": 0.013664583333333332,
+    "std": 0.012843801308334553
+   }
+  }
+ },
+ "sims": 40,
+ "n": 100
+}

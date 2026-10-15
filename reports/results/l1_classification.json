@@ -1,0 +1,357 @@
+{
+ "1a_imbalance": {
+  "50% positives: model": {
+   "accuracy": 0.75934,
+   "balanced accuracy": 0.7593282376629383,
+   "ROC AUC": 0.8427170082100764,
+   "PR AUC": 0.8426819247995332,
+   "log loss": 0.4891373989829528,
+   "Brier": 0.1618352466511432,
+   "Brier skill": 0.35264834270964895,
+   "calibration error": 0.0025143398452155026,
+   "mean prediction": 0.5033103195393698,
+   "prevalence": 0.50203
+  },
+  "50% positives: always 'no'": {
+   "accuracy": 0.49797,
+   "balanced accuracy": 0.5,
+   "ROC AUC": 0.5,
+   "PR AUC": 0.50203,
+   "log loss": 3.4683986018585165,
+   "Brier": 0.5010269400000001,
+   "Brier skill": -1.0041407954552168,
+   "calibration error": 0.50103,
+   "mean prediction": 0.0010000000000000002,
+   "prevalence": 0.50203
+  },
+  "50% positives: true probabilities": {
+   "accuracy": 0.76169,
+   "balanced accuracy": 0.7616936640536809,
+   "ROC AUC": 0.8444770896225545,
+   "PR AUC": 0.8442704282845597,
+   "log loss": 0.4867566158174477,
+   "Brier": 0.1609154551872434,
+   "Brier skill": 0.35632756921214614,
+   "calibration error": 0.0025199884587404856,
+   "mean prediction": 0.5009421956992502,
+   "prevalence": 0.50203
+  },
+  "10% positives: model": {
+   "accuracy": 0.9101,
+   "balanced accuracy": 0.6107075703148044,
+   "ROC AUC": 0.8631260805073687,
+   "PR AUC": 0.4756782380176497,
+   "log loss": 0.23463371629927307,
+   "Brier": 0.06861598673451752,
+   "Brier skill": 0.24391027398405074,
+   "calibration error": 0.0013464779425810935,
+   "mean prediction": 0.10041602099633505,
+   "prevalence": 0.10094
+  },
+  "10% positives: always 'no'": {
+   "accuracy": 0.89906,
+   "balanced accuracy": 0.5,
+   "ROC AUC": 0.5,
+   "PR AUC": 0.10094,
+   "log loss": 0.6981683276903684,
+   "Brier": 0.10073912,
+   "Brier skill": -0.11005929178850304,
+   "calibration error": 0.09994000000000001,
+   "mean prediction": 0.0010000000000000002,
+   "prevalence": 0.10094
+  },
+  "10% positives: true probabilities": {
+   "accuracy": 0.91045,
+   "balanced accuracy": 0.6117377053005598,
+   "ROC AUC": 0.8659517008432086,
+   "PR AUC": 0.4827062910866897,
+   "log loss": 0.2327281720679825,
+   "Brier": 0.06807218754976015,
+   "Brier skill": 0.2499024777863763,
+   "calibration error": 0.0016772286988767453,
+   "mean prediction": 0.1004402088974261,
+   "prevalence": 0.10094
+  },
+  "1% positives: model": {
+   "accuracy": 0.98976,
+   "balanced accuracy": 0.5091813608854672,
+   "ROC AUC": 0.8682577365661879,
+   "PR AUC": 0.1390249666293121,
+   "log loss": 0.04472243665759112,
+   "Brier": 0.00940932423635884,
+   "Brier skill": 0.07161400747967384,
+   "calibration error": 0.0014747470996068625,
+   "mean prediction": 0.011535665172609087,
+   "prevalence": 0.01024
+  },
+  "1% positives: always 'no'": {
+   "accuracy": 0.98976,
+   "balanced accuracy": 0.5,
+   "ROC AUC": 0.5,
+   "PR AUC": 0.01024,
+   "log loss": 0.07172566926694474,
+   "Brier": 0.010220520000000002,
+   "Brier skill": -0.008423917161736405,
+   "calibration error": 0.009239999999999998,
+   "mean prediction": 0.0010000000000000002,
+   "prevalence": 0.01024
+  },
+  "1% positives: true probabilities": {
+   "accuracy": 0.98983,
+   "balanced accuracy": 0.5111496410746039,
+   "ROC AUC": 0.8848676758601832,
+   "PR AUC": 0.16987093571788245,
+   "log loss": 0.04303656617747012,
+   "Brier": 0.009217785499432448,
+   "Brier skill": 0.09051248264331757,
+   "calibration error": 0.0003569316046780359,
+   "mean prediction": 0.010082734105592867,
+   "prevalence": 0.01024
+  }
+ },
+ "1b_calibration": {
+  "logistic": {
+   "accuracy": 0.90918,
+   "balanced accuracy": 0.6117349802652124,
+   "ROC AUC": 0.8615045346152899,
+   "PR AUC": 0.47103315424181724,
+   "log loss": 0.23585336568839116,
+   "Brier": 0.06897895281925752,
+   "Brier skill": 0.2399106969084347,
+   "calibration error": 0.0033753234517645324,
+   "mean prediction": 0.09996501619456867,
+   "prevalence": 0.10094
+  },
+  "logistic, balanced weights": {
+   "accuracy": 0.77137,
+   "balanced accuracy": 0.7805072059697549,
+   "ROC AUC": 0.8607544127137592,
+   "PR AUC": 0.4697831763968714,
+   "log loss": 0.4679205499878005,
+   "Brier": 0.15424041488879492,
+   "Brier skill": -0.6995979885135046,
+   "calibration error": 0.24282745411211815,
+   "mean prediction": 0.3437674541121181,
+   "prevalence": 0.10094
+  },
+  "gradient boosting": {
+   "accuracy": 0.9034,
+   "balanced accuracy": 0.5800699725606902,
+   "ROC AUC": 0.8222469084688858,
+   "PR AUC": 0.38951345382877167,
+   "log loss": 0.33303581404193394,
+   "Brier": 0.08060120947672086,
+   "Brier skill": 0.11184332850013434,
+   "calibration error": 0.04950528122675816,
+   "mean prediction": 0.051434718773241836,
+   "prevalence": 0.10094
+  },
+  "balanced, recalibrated": {
+   "accuracy": 0.90861,
+   "balanced accuracy": 0.6256652386482378,
+   "ROC AUC": 0.8568165052347498,
+   "PR AUC": 0.42996665748861607,
+   "log loss": 0.2433139231392996,
+   "Brier": 0.06943958366541424,
+   "Brier skill": 0.23483493735384797,
+   "calibration error": 0.002890654283161868,
+   "mean prediction": 0.10057701143864524,
+   "prevalence": 0.10094
+  },
+  "true probabilities": {
+   "accuracy": 0.91045,
+   "balanced accuracy": 0.6117377053005598,
+   "ROC AUC": 0.8659517008432086,
+   "PR AUC": 0.4827062910866897,
+   "log loss": 0.2327281720679825,
+   "Brier": 0.06807218754976015,
+   "Brier skill": 0.2499024777863763,
+   "calibration error": 0.0016772286988767453,
+   "mean prediction": 0.1004402088974261,
+   "prevalence": 0.10094
+  }
+ },
+ "1c_thresholds": {
+  "0.5 (default)": {
+   "threshold": 0.5,
+   "expected cost per case": 0.39806,
+   "share flagged": 0.03814
+  },
+  "F1-maximising (chosen on held-out split)": {
+   "threshold": 0.24601218714832987,
+   "expected cost per case": 0.30661,
+   "share flagged": 0.12177
+  },
+  "cost-based 1/(1+5) = 0.167": {
+   "threshold": 0.16666666666666666,
+   "expected cost per case": 0.2924,
+   "share flagged": 0.18436
+  },
+  "cost-based 0.167 on the balanced model": {
+   "threshold": 0.16666666666666666,
+   "expected cost per case": 0.5599,
+   "share flagged": 0.63972
+  },
+  "cost-based 0.167 on true probabilities": {
+   "threshold": 0.16666666666666666,
+   "expected cost per case": 0.28572,
+   "share flagged": 0.18542
+  }
+ },
+ "1b_curves": {
+  "logistic": [
+   [
+    0.0017,
+    0.0088,
+    0.0126,
+    0.0193,
+    0.0323,
+    0.0487,
+    0.0713,
+    0.1259,
+    0.2155,
+    0.4733
+   ],
+   [
+    0.001938083337178589,
+    0.005930153340390021,
+    0.011338115083002193,
+    0.0189119752119974,
+    0.03001517639723041,
+    0.04640354220744619,
+    0.07296436852786664,
+    0.11897455583125191,
+    0.2097749456427025,
+    0.48339924636662207
+   ]
+  ],
+  "logistic, balanced weights": [
+   [
+    0.0018,
+    0.0093,
+    0.0124,
+    0.0194,
+    0.0309,
+    0.0492,
+    0.0758,
+    0.1223,
+    0.2164,
+    0.4719
+   ],
+   [
+    0.020649301822354416,
+    0.058398259744062576,
+    0.10389172155146359,
+    0.16065365473413626,
+    0.23145280552615619,
+    0.3178083783893066,
+    0.4232142545259118,
+    0.5506614683228443,
+    0.6974635292551464,
+    0.873481167249802
+   ]
+  ],
+  "gradient boosting": [
+   [
+    0.0072,
+    0.0141,
+    0.0206,
+    0.0309,
+    0.0433,
+    0.0572,
+    0.0873,
+    0.1291,
+    0.2061,
+    0.4136
+   ],
+   [
+    0.00014373128928953414,
+    0.00040532556593616826,
+    0.0008087199681877938,
+    0.0014638964443291673,
+    0.002619765679668681,
+    0.004825117877750997,
+    0.009475465149945149,
+    0.021627365558854535,
+    0.06691591708776805,
+    0.406061883110689
+   ]
+  ],
+  "balanced, recalibrated": [
+   [
+    0.0028981199375789552,
+    0.011753876655101607,
+    0.017537537537537538,
+    0.021322575997694857,
+    0.05252190020453054,
+    0.11467706458708259,
+    0.17959481657236723,
+    0.24241932868493596,
+    0.48035025539455856
+   ],
+   [
+    0.0,
+    0.013492275065962839,
+    0.014180813855595662,
+    0.027503690248577174,
+    0.05627823137056136,
+    0.11077585791933542,
+    0.1737710704865496,
+    0.23198735116594882,
+    0.48046656139830873
+   ]
+  ],
+  "true probabilities": [
+   [
+    0.0022,
+    0.0063,
+    0.0135,
+    0.0178,
+    0.0309,
+    0.0472,
+    0.0739,
+    0.1198,
+    0.2147,
+    0.4831
+   ],
+   [
+    0.002149101470176998,
+    0.006425350502986552,
+    0.01213217995630308,
+    0.020027616597512836,
+    0.03135418116094439,
+    0.04822758871247657,
+    0.07503470203972605,
+    0.12071774896786774,
+    0.2096394305224771,
+    0.47869418904378824
+   ]
+  ]
+ },
+ "1d_german": {
+  "logistic": {
+   "ROC AUC": 0.7850666666666667,
+   "Brier": 0.1663950856905172,
+   "calibration error": 0.028347281545328267,
+   "accuracy at 0.5": 0.748,
+   "cost per loan at 0.5": 0.896,
+   "cost per loan at 0.167": 0.538,
+   "cost per loan, approve everyone": 1.5,
+   "cost per loan, reject everyone": 0.7
+  },
+  "gradient boosting": {
+   "ROC AUC": 0.774347619047619,
+   "Brier": 0.17725385669211552,
+   "calibration error": 0.10109532808559235,
+   "accuracy at 0.5": 0.758,
+   "cost per loan at 0.5": 0.858,
+   "cost per loan at 0.167": 0.642,
+   "cost per loan, approve everyone": 1.5,
+   "cost per loan, reject everyone": 0.7
+  }
+ },
+ "1d_info": {
+  "n": 1000,
+  "bad_rate": 0.3
+ }
+}
