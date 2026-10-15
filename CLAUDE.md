@@ -9,6 +9,7 @@ measured against the real out-of-sample score instead of argued about.
 ```bash
 source ../../.venv/bin/activate          # shared workspace venv (sklearn 1.9, numpy 2.4); CPU only
 pytest -q
+PYTHONPATH=src python -m evallab regression   # lesson 2, ~45 s (downloads California housing to data/)
 PYTHONPATH=src python -m evallab estimators   # lesson 3, ~4 min on 8 processes
 PYTHONPATH=src python -m evallab leakage      # lesson 4, ~40 s
 ```
@@ -19,7 +20,7 @@ Results: `reports/results/*.json` (+ per-simulation CSVs), figures in `reports/f
 
 1. Choosing the classification metric: imbalance, ROC vs PR AUC, proper scores (log loss, Brier), calibration,
    cost-based thresholds.
-2. Regression evaluation: MAE vs RMSE vs MAPE vs R^2, what each one's best prediction is, intervals and coverage.
+2. **Regression evaluation** (done): MAE vs RMSE vs MAPE vs R^2, what each one's best prediction is, intervals and coverage.
 3. **Estimating test error** (done): holdout, K-fold, repeated K-fold, .632 bootstrap vs the true error.
 4. **Leakage** (done): selection before CV, grouped records, overlapping time targets.
 5. Tuning and selection bias: nested CV, the winner's curse, choosing on one validation group.

@@ -44,3 +44,21 @@ def test_walk_forward_trains_only_on_the_past():
 def test_wrong_way_cv_is_optimistic():
     r = leakage.wrong_vs_right(0, n=40, p=2000, k=50)
     assert r["wrong way (select, then CV)"] < 0.3 < r["right way (select inside each fold)"]
+
+
+def test_skewed_oracles_win_their_own_metric():
+    from evallab import regression
+    gen = truth.Skewed()
+    X, y = gen.sample(200_000, np.random.default_rng(1))
+    p = {t: gen.best(X, t) for t in ["mean", "median", "mape", "quantile"]}
+    assert regression.METRICS["MAPE"](y, p["mape"]) < regression.METRICS["MAPE"](y, p["median"])
+    assert regression.METRICS["MAE"](y, p["median"]) < regression.METRICS["MAE"](y, p["mean"])
+    assert regression.METRICS["RMSE"](y, p["mean"]) < regression.METRICS["RMSE"](y, p["median"])
+    assert abs(np.mean(p["mean"] - y)) < 0.01 * y.mean()
+
+
+def test_r2_depends_on_spread_not_error():
+    from evallab import regression
+    r = regression.r2_range(n=20_000)
+    a, b = r.values()
+    assert abs(a["RMSE"] - b["RMSE"]) < 0.05 and b["R2"] - a["R2"] > 0.25

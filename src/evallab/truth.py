@@ -92,3 +92,44 @@ def overlapping(n, h, rng, windows=(20, 60)):
     X = np.c_[[(c[t] - c[t - k]) / k for k in windows]].T
     y = c[t + h] - c[t]
     return X, y, t
+
+
+@dataclass
+class Skewed:
+    """A right-skewed target, like prices or sales: log y = mu(x) + sigma(x) * eps, eps ~ N(0, 1).
+
+    Because the distribution of y given x is known exactly, so is the best possible prediction under each metric:
+    the mean for squared error, the median for absolute error, the q-quantile for pinball loss, and, for MAPE, a
+    value *below* the median, exp(mu - sigma^2). Different metrics reward different predictions.
+    """
+    p: int = 5
+
+    def mu(self, X):
+        return 3.0 + 0.6 * X[:, 0] + 0.4 * X[:, 1]
+
+    def sigma(self, X):
+        return 0.3 + 0.4 / (1 + np.exp(-2 * X[:, 2]))          # 0.3 to 0.7: noisier for some rows
+
+    def sample(self, n, rng):
+        X = rng.standard_normal((n, self.p))
+        return X, np.exp(self.mu(X) + self.sigma(X) * rng.standard_normal(n))
+
+    def best(self, X, target, q=0.9):
+        """The prediction that minimises the expected loss of `target` given X."""
+        from scipy.stats import norm
+        m, s = self.mu(X), self.sigma(X)
+        return {"mean": np.exp(m + s ** 2 / 2), "median": np.exp(m), "mape": np.exp(m - s ** 2),
+                "quantile": np.exp(m + s * norm.ppf(q))}[target]
+
+
+@dataclass
+class Hetero:
+    """Additive noise whose size grows with x: y = 2 sin(x) + x + (0.2 + 0.4 (x + 3)) * eps, x ~ U(-3, 3).
+    The true 10%-90% interval at each x is known, so interval coverage can be checked where it matters: per x."""
+
+    def scale(self, x):
+        return 0.2 + 0.4 * (x + 3)
+
+    def sample(self, n, rng):
+        x = rng.uniform(-3, 3, n)
+        return x[:, None], 2 * np.sin(x) + x + self.scale(x) * rng.standard_normal(n)

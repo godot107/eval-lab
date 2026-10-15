@@ -3,7 +3,7 @@
 ## Lessons
 - [ ] 1 Classification metrics: imbalance (accuracy vs balanced accuracy), ROC vs PR AUC at 1%/10%/50% prevalence,
       log loss and Brier, reliability diagram, threshold from a cost ratio. Real data: a credit or fraud set.
-- [ ] 2 Regression: MAE (median-optimal) vs RMSE (mean-optimal) vs MAPE (breaks near zero, favours under-prediction)
+- [x] 2 Regression: MAE (median-optimal) vs RMSE (mean-optimal) vs MAPE (breaks near zero, favours under-prediction)
       vs R^2; pinball loss and prediction-interval coverage; residual plots. Real data: California housing.
 - [x] 3 Estimating test error (results below)
 - [x] 4 Leakage (results below)

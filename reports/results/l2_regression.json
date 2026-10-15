@@ -1,0 +1,196 @@
+{
+ "2a_metric_choice": {
+  "squared error (mean)": {
+   "RMSE": 23.54059111820868,
+   "MAE": 12.77848361417409,
+   "MAPE": 0.5735221140513483,
+   "pinball 0.9": 6.277364554901055,
+   "R2": 0.48731719826607356,
+   "mean bias": 0.2796931304649729
+  },
+  "absolute error (median)": {
+   "RMSE": 23.312464402899852,
+   "MAE": 11.881103893149588,
+   "MAPE": 0.47310141536791966,
+   "pinball 0.9": 7.34395428919597,
+   "R2": 0.4972056451921044,
+   "mean bias": -3.5085058565529437
+  },
+  "MAPE-weighted (low median)": {
+   "RMSE": 27.6397113209717,
+   "MAE": 13.262651275476669,
+   "MAPE": 0.3984330961239666,
+   "pinball 0.9": 10.77721102429842,
+   "R2": 0.29322524857162524,
+   "mean bias": -10.364713466400218
+  },
+  "quantile 0.9": {
+   "RMSE": 30.99390804623769,
+   "MAE": 20.68408304302058,
+   "MAPE": 1.1610915687269272,
+   "pinball 0.9": 3.9449388037091127,
+   "R2": 0.11127642374560798,
+   "mean bias": 15.99275679450294
+  },
+  "log target, exp back": {
+   "RMSE": 23.36048578287212,
+   "MAE": 12.02858866726671,
+   "MAPE": 0.471044381495936,
+   "pinball 0.9": 7.3374758222830945,
+   "R2": 0.4951320980648515,
+   "mean bias": -3.3079537216243486
+  },
+  "oracle: mean": {
+   "RMSE": 21.949155973267555,
+   "MAE": 11.90943335126654,
+   "MAPE": 0.5329325975511606,
+   "pinball 0.9": 5.937298845198009,
+   "R2": 0.5542927789912281,
+   "mean bias": 0.04354457608815248
+  },
+  "oracle: median": {
+   "RMSE": 22.568916264914673,
+   "MAE": 11.47515224034221,
+   "MAPE": 0.4434212739590216,
+   "pinball 0.9": 7.2231226224390905,
+   "R2": 0.5287672872076494,
+   "mean bias": -3.713866255669965
+  },
+  "oracle: mape": {
+   "RMSE": 25.81026917239113,
+   "MAE": 12.668891467516204,
+   "MAPE": 0.3811323096884384,
+   "pinball 0.9": 10.185264328034524,
+   "R2": 0.3836901787989484,
+   "mean bias": -9.627046485691055
+  },
+  "oracle: quantile": {
+   "RMSE": 35.328939739625284,
+   "MAE": 23.410841191379706,
+   "MAPE": 1.2676946180811401,
+   "pinball 0.9": 3.5920737971970973,
+   "R2": -0.15471612056406725,
+   "mean bias": 20.283366996231887
+  }
+ },
+ "2b_r2_range": {
+  "narrow x, U(-1, 1)": {
+   "RMSE": 1.0016869031155073,
+   "R2": 0.5688237478609253
+  },
+  "wide x, U(-3, 3)": {
+   "RMSE": 0.999330608099637,
+   "R2": 0.9229912000570331
+  }
+ },
+ "2c_intervals": {
+  "naive: prediction +/- 1.28 RMSE": {
+   "coverage": 0.8317,
+   "coverage, quiet third": 0.9942268165880789,
+   "coverage, middle third": 0.8578937936801864,
+   "coverage, noisy third": 0.644643177603637,
+   "mean width": 4.2598403229840605
+  },
+  "quantile regression (10%, 90%)": {
+   "coverage": 0.74041,
+   "coverage, quiet third": 0.7288115100955145,
+   "coverage, middle third": 0.7489397288095095,
+   "coverage, noisy third": 0.74334509780463,
+   "mean width": 3.3888548420804936
+  },
+  "split conformal (constant width)": {
+   "coverage": 0.79362,
+   "coverage, quiet third": 0.9874259460766533,
+   "coverage, middle third": 0.8089122513589392,
+   "coverage, noisy third": 0.5865286833762039,
+   "mean width": 3.7562525199013876
+  },
+  "conformalized quantile (CQR)": {
+   "coverage": 0.80331,
+   "coverage, quiet third": 0.840345786482892,
+   "coverage, middle third": 0.7959799295143659,
+   "coverage, noisy third": 0.7740025124125142,
+   "mean width": 3.7369485291412614
+  },
+  "oracle (true 10%-90%)": {
+   "coverage": 0.80012,
+   "coverage, quiet third": 0.7985733284971588,
+   "coverage, middle third": 0.803595962009438,
+   "coverage, noisy third": 0.7981695280253635,
+   "mean width": 3.597041937164079
+  }
+ },
+ "2d_california": {
+  "squared error (mean)": {
+   "RMSE": 0.4578509330252094,
+   "MAE": 0.30344541383674833,
+   "MAPE": 0.17073835851397362,
+   "pinball 0.9": 0.15154451398559474,
+   "R2": 0.8425688636327326,
+   "mean bias": 0.00044548233194862194
+  },
+  "absolute error (median)": {
+   "RMSE": 0.4830411321797522,
+   "MAE": 0.3042721780807689,
+   "MAPE": 0.16148778080809198,
+   "pinball 0.9": 0.17389781623057451,
+   "R2": 0.8247691165980274,
+   "mean bias": -0.054404317975475104
+  },
+  "MAPE-weighted (low median)": {
+   "RMSE": 0.5349459555832751,
+   "MAE": 0.32845202049530936,
+   "MAPE": 0.1579290592419299,
+   "pinball 0.9": 0.22561954413078453,
+   "R2": 0.7850872209804453,
+   "mean bias": -0.15348383470782462
+  },
+  "quantile 0.9": {
+   "RMSE": 0.736851435401588,
+   "MAE": 0.5562259513977806,
+   "MAPE": 0.3657593678000133,
+   "pinball 0.9": 0.08952191553299182,
+   "R2": 0.5922421873060124,
+   "mean bias": 0.4714776504147462
+  },
+  "log target, exp back": {
+   "RMSE": 0.4691481090562435,
+   "MAE": 0.3012530352241671,
+   "MAPE": 0.15795718077164092,
+   "pinball 0.9": 0.16947890685850617,
+   "R2": 0.8347039926185842,
+   "mean bias": -0.04713097311605667
+  }
+ },
+ "2d_cap": {
+  "n": 20640,
+  "capped_rows": 992,
+  "by_model": {
+   "squared error (mean)": {
+    "mean error on capped rows": -0.5315132807806059,
+    "MAE on capped rows": 0.5844026405051058,
+    "MAE on the rest": 0.28926027698541434
+   },
+   "absolute error (median)": {
+    "mean error on capped rows": -0.615489581391587,
+    "MAE on capped rows": 0.6412179927517606,
+    "MAE on the rest": 0.2872602558416798
+   },
+   "MAPE-weighted (low median)": {
+    "mean error on capped rows": -0.8859448636760802,
+    "MAE on capped rows": 0.9265324454666188,
+    "MAE on the rest": 0.29825577754073185
+   },
+   "quantile 0.9": {
+    "mean error on capped rows": -0.18309496705411754,
+    "MAE on capped rows": 0.251705703057356,
+    "MAE on the rest": 0.5716007522097565
+   },
+   "log target, exp back": {
+    "mean error on capped rows": -0.6074275338462213,
+    "MAE on capped rows": 0.6898769707548505,
+    "MAE on the rest": 0.2816319570459078
+   }
+  }
+ }
+}

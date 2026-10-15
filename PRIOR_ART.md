@@ -13,6 +13,8 @@ Found through textbook-kb (Willie's library) on 2026-10-15. Section-level citati
 | Regression error metrics | Jansen, *ML for Algorithmic Trading* (2nd ed.), ch. 6 | Lesson 2 |
 | Stratified and grouped K-fold in scikit-learn | Guido and Muller, *Introduction to ML with Python*, ch. 5; scikit-learn user guide, "Cross-validation" (the link on the Trello card) | Lessons 3 and 4b |
 
+| Conformalized quantile regression | Romano, Patterson, Candes, "Conformalized Quantile Regression", NeurIPS 2019 | Lesson 2c |
+
 To add when lessons 5 and 6 are built (verify before citing): Cawley and Talbot (2010) on selection bias in
 model evaluation; Nadeau and Bengio (2003) on the corrected resampled t-test; Dietterich (1998) on statistical tests
 for comparing classifiers.

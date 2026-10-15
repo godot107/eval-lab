@@ -7,6 +7,55 @@ estimate can be compared with the model's real score on 100,000 fresh examples. 
 
 ## Results so far
 
+### Lesson 2: evaluating regression
+
+**There is no best model until you pick the metric.** A skewed target, like prices or sales. Five models, each
+aimed at one metric, all scored on 100,000 fresh rows (1.00 = best on that metric):
+
+| Model trained for... | RMSE | MAE | MAPE | Pinball 0.9 | Average bias |
+|---|---|---|---|---|---|
+| Squared error (predicts the mean) | 1.01 | 1.08 | 1.44 | 1.59 | **+0.3 (unbiased)** |
+| Absolute error (the median) | **1.00** | **1.00** | 1.19 | 1.86 | -3.5 |
+| MAPE (a value below the median) | 1.19 | 1.12 | **1.00** | 2.73 | -10.4 |
+| 90% quantile | 1.33 | 1.74 | 2.91 | **1.00** | +16.0 |
+| Fit log y, exponentiate back | 1.00 | 1.01 | 1.18 | 1.86 | -3.3 |
+
+- **MAE rewards the median, MAPE rewards under-forecasting, pinball rewards a chosen quantile.** Each column's
+  winner is the model built for it. Pick the metric from the cost of being wrong: MAPE treats a 10% miss on a $5
+  item like a 10% miss on a $5,000 one and pays you to forecast low.
+- **RMSE should reward the mean model, and here it didn't**: the best possible mean and median predictions differ
+  by only 3% in RMSE (21.9 vs 22.6), and on a skewed target 5,000 rows can't estimate the mean that precisely.
+  RMSE is dominated by a few huge values.
+- **Bias is the hidden cost.** The median and "log, then exponentiate" models under-predict by about 11% on
+  average. Fine for a typical case; a problem if forecasts are *summed* (inventory, budget), where only the mean
+  model adds up.
+
+**R² is not a property of the model.** Same model, same noise, same RMSE (1.00); only the spread of the inputs
+changed. R² was **0.57** with narrow inputs and **0.92** with wide ones. Compare models on the same data with an
+error in the target's units, not R² across datasets.
+
+**An "80% interval" is often 80% on average and wrong everywhere.** Noise grows with x:
+
+| Interval | Overall | Quiet x | Middle x | Noisy x | Width |
+|---|---|---|---|---|---|
+| Naive: prediction +/- 1.28 x RMSE | 83% | 99% | 86% | **65%** | 4.26 |
+| Quantile regression (10%, 90%) | 74% | 73% | 75% | 74% | 3.39 |
+| Split conformal (constant width) | 79% | 99% | 81% | **59%** | 3.76 |
+| Conformalized quantile regression | **80%** | 84% | 80% | 77% | 3.74 |
+| True 10%-90% interval | 80% | 80% | 80% | 80% | 3.60 |
+
+The naive and conformal intervals hit roughly 80% overall by being far too wide where things are calm and too
+narrow exactly where risk is highest. Quantile regression has the right shape but under-covers; conformalizing it
+(CQR) fixes the level and keeps the shape. Check coverage by segment, not just overall.
+
+![Lesson 2](reports/figures/l2_regression.png)
+
+**On real data** (California housing, 5-fold CV) the same pattern holds: the squared-error model has the best RMSE
+(0.458) and R² (0.84), the log-target model the best MAE (0.301), the MAPE-weighted and log models the best MAPE
+(0.158), and the 90% quantile model the best pinball loss. One more trap: 992 homes are recorded at the $500k cap,
+their real prices are higher, and every model's error on them (MAE 0.58 for the mean model, twice the rest)
+is understated, because the recorded target is wrong.
+
 ### Lesson 3: a cross-validation score is a noisy estimate
 
 A logistic regression on 200 examples, repeated over 200 independent training sets. The best possible error is
@@ -49,7 +98,7 @@ folds and longer horizons (on the TODO list).
 ## Lessons
 
 1. Choosing the classification metric (planned)
-2. Evaluating regression (planned)
+2. Evaluating regression (done)
 3. Estimating test error (done)
 4. Leakage (done)
 5. Tuning and selection bias: nested CV (planned)
@@ -62,6 +111,7 @@ folds and longer horizons (on the TODO list).
 ```bash
 pip install -r requirements-dev.txt
 pytest -q
+PYTHONPATH=src python -m evallab regression
 PYTHONPATH=src python -m evallab estimators
 PYTHONPATH=src python -m evallab leakage
 ```
